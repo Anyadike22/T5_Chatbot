@@ -9,7 +9,7 @@ llm = ChatGroq(model_name = "llama3-70b-8192",
                api_key="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")
 
 # Load Data
-df = pd.read_excel("Africa Infrastructure Development Index AIDI.csv")
+df = pd.read_csv("Africa Infrastructure Development Index AIDI.csv")
 smart_df = SmartDataframe(df, config = {"llm" : llm})
 
 # print(smart_df.chat("How many rows and columns in the data set?"))
