@@ -5,14 +5,18 @@ from langchain_groq.chat_models import ChatGroq
 import os
 
 # Initialize the language model
-llm = ChatGroq(model_name = "llama3-70b-8192", 
-               api_key="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")
+llm = ChatGroq(
+    model_name="llama2-70b-4096",  # Verify this is the correct model name
+    api_key=st.secrets["GROQ_API_KEY"]  # Use Streamlit secrets
+)
 
 # Load Data
-df = pd.read_csv("Africa Infrastructure Development Index AIDI.csv")
-smart_df = SmartDataframe(df, config = {"llm" : llm})
+@st.cache_data
+def load_data():
+    return pd.read_csv("Africa Infrastructure Development Index AIDI.csv")
 
-# print(smart_df.chat("How many rows and columns in the data set?"))
+df = load_data()
+smart_df = SmartDataframe(df, config={"llm": llm})
 
 # Initialize session state for question history
 if 'question_history' not in st.session_state:
@@ -23,7 +27,7 @@ st.title("Exploring Conversations with Data using LLM")
 
 # Display data
 st.sidebar.header("Options")
-show_data = st.sidebar.checkbox("show raw data")
+show_data = st.sidebar.checkbox("Show raw data")
 if show_data:
     st.subheader("AIDI Data")
     st.dataframe(df.head(20))
@@ -35,14 +39,13 @@ if st.button("Get Answer"):
     answer = smart_df.chat(user_question)
     st.write(answer)
     st.session_state.question_history.append(user_question)
-    image_path = r"exports/charts/temp_chart.png"
-
-    if os.path.exists(image_path):
-        st.image(image_path, caption = "Sample Chart", use_column_width=True)
-        os.remove(image_path)
+    
+    # Check if a chart was generated
+    if hasattr(smart_df, 'last_code_execution'):
+        if smart_df.last_code_execution.output:
+            st.pyplot(smart_df.last_code_execution.output)
 
 # Display the history of questions
 st.subheader("Question History")
-for i, question in enumerate(st.session_state.question_history,1):
-    st.write(f"{i}. {question}")        
-
+for i, question in enumerate(st.session_state.question_history, 1):
+    st.write(f"{i}. {question}")
