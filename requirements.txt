@@ -1,4 +1,3 @@
-langchain-groq
-PyYAML
-pandasai==2.2.10
+
+pandasai
 pandas
