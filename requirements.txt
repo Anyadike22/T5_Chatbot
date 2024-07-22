@@ -1,3 +1,4 @@
-
-pandasai
-pandas
+streamlit==1.22.0
+pandas==1.5.3
+pandasai==1.2.8
+langchain-groq==0.0.3
