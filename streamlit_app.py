@@ -10,7 +10,6 @@ llm = ChatGroq(
     api_key=st.secrets["GROQ_API_KEY"]  # Use Streamlit secrets
 )
 
-
 # Available datasets
 datasets = {
     "AIDI": "Africa Infrastructure Development Index AIDI.csv",
