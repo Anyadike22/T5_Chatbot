@@ -6,7 +6,7 @@ import os
 
 # Initialize the language model
 llm = ChatGroq(
-    model_name="llama2-70b-4096",  # Verify this is the correct model name
+    model_name="llama3-70b-8192",  # Verify this is the correct model name
     api_key=st.secrets["GROQ_API_KEY"]  # Use Streamlit secrets
 )
 
