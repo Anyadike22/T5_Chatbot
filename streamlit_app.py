@@ -14,10 +14,10 @@ llm = ChatGroq(
 datasets = {
     "AIDI": "Africa Infrastructure Development Index AIDI.csv",
     "WSSC": "Water and Sanitation Service (WSS) Composite Index (2).csv",
-    "ELECT": "Electricity composite Index.csv",
+    "ELECTRICITY": "Electricity composite Index.csv",
     "ICT": "ICT composite Index.csv",
-    "TRANS": "Transport Composite Index.csv",
-    "COMBINED": "combined_dfCountry-aidi_mean-eci_mean-wssci_mean%.csv"
+    "TRANSPORT": "Transport Composite Index.csv",
+    "FUSED": "combined_dfCountry-aidi_mean-eci_mean-wssci_mean%.csv"
 }
 
 # Initialize session state for question history
@@ -37,7 +37,7 @@ selected_df = pd.read_csv(selected_dataset_path)
 smart_selected_df = SmartDataframe(selected_df, config={"llm": llm})
 
 # Display dataset
-st.subheader(f"{selected_dataset_name} Data")
+st.subheader(f"{selected_dataset_name} DATA")
 st.dataframe(selected_df.head(20))
 
 # Input for user question
