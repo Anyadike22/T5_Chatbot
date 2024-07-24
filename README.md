@@ -1,4 +1,4 @@
-# T5_Chatbot
+
 
 # T5 Data Analytics Chatbot
 
@@ -53,8 +53,8 @@ cd t5-data-analytics-chatbot
 Contributions to improve the T5 Data Analytics Chatbot are welcome. Please feel free to submit pull requests or open issues to discuss proposed changes.
 
 ## License
-[Include your chosen license here]
+[MIT License]
 
 ## Acknowledgements
 - This project uses the Groq API for natural language processing.
-- Data sources: [List your data sources/providers here]
+- Data sources: [ Africa Infrastructure Development Index website ]
