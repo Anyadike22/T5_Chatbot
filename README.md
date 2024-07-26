@@ -28,6 +28,10 @@ The application includes the following datasets:
 - LangChain
 - Groq API access
 
+## Link to the deployed Chatbot:
+
+https://t5chatbot-enbvmods2hclud7qy5ksvk.streamlit.app/
+
 ## Installation
 1. Clone this repository:
    git clone https://github.com/yourusername/t5-data-analytics-chatbot.git
